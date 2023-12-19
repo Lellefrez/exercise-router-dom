@@ -1,26 +1,20 @@
-body{
-    background-color: silver;
+body {
+  background-color: silver;
 }
-.map-List{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 2rem;
+h2 {
+  padding: 2rem;
+  color: red;
+  text-align: center;
 }
-h2{
-    padding: 2rem;
-    color: red;
-    text-align: center;
-}
-.Cover-glag-info{
+.container-flag {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  .Cover-flag {
     border: 1px solid;
     background-color: lightblue;
-    max-height: 94%;
-    .flag{
-        text-align: center;
+    .flag {
+      text-align: center;
     }
-    .Info-Countries{
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-    }
+  }
 }
