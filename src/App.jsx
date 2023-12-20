@@ -7,7 +7,19 @@ import Countries from "./Countries";
 import NotFound from "./NotFound";
 import { Link, NavLink } from "react-router-dom";
 import Country from "./Country";
+import LangContext from "./LangContext";
 function App() {
+  const [lang, setLang] = useState("en-US");
+
+  const trad = {
+    "en-US": { Home: "Home", About: "About US", countries: "Countries" },
+    "it-IT": {
+      Home: "Pagina Iniziale",
+      About: "Chi Siamo",
+      countries: "Paesi",
+    },
+  };
+
   return (
     <>
       <nav>
@@ -16,32 +28,38 @@ function App() {
             <li>
               {" "}
               <NavLink className="link" to={"/"}>
-                Home
+                {trad[lang].Home}
               </NavLink>
             </li>
             <li>
               <NavLink className="link" to={"/About"}>
-                About
+                {trad[lang].About}
               </NavLink>
             </li>
             <li>
               <NavLink className="link" to={"/Countries"}>
-                countries
+                {trad[lang].countries}
               </NavLink>
             </li>
           </ul>
+          <select onChange={(e) => setLang(e.target.value)}>
+            <option value="en-US">ENG</option>
+            <option value="it-IT">ITA</option>
+          </select>
         </menu>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Countries" element={<Countries />} />
-        <Route path="/Country">
-          <Route index element={<Country />} />
-          <Route path=":code" element={<Country />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <LangContext.Provider value={lang}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Countries" element={<Countries />} />
+          <Route path="/Country">
+            <Route index element={<Country />} />
+            <Route path=":code" element={<Country />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </LangContext.Provider>
     </>
   );
 }

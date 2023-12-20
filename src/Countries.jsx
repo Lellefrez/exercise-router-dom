@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import "./Countries.scss";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import LangContext from "./LangContext";
+
 export default () => {
   const [countries, setcountries] = useState([]);
   const [error, setError] = useState();
@@ -18,9 +21,18 @@ export default () => {
       });
   }, []);
 
+  const lang = useContext(LangContext);
+
+  const trad = {
+    "en-US": { title: "Countries" },
+    "it-IT": {
+      title: "Paesi",
+    },
+  };
+
   return (
     <>
-      <h1>COUNTRIES</h1>
+      <h1>{trad[lang].title}</h1>
       {error ? (
         <div>{error}</div>
       ) : (
