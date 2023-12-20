@@ -1,21 +1,25 @@
-nav{
-    menu{
-        ul{
-            display: flex;
-            justify-content: center;
-            padding: 1rem;
-            gap: 5rem;
-            font-size: 1.2rem;
-            li{
-                text-decoration: none;
-                list-style: none;
-                &hover{
-                    cursor: pointer;
-
-                }
-            }
-        }
-          
+nav {
+  menu {
+    .link {
+      &.active {
+        text-decoration: none;
+        color: gray;
+        pointer-events: none;
+      }
     }
-  
+    ul {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      gap: 5rem;
+      font-size: 1.2rem;
+      li {
+        text-decoration: none;
+        list-style: none;
+        &hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
